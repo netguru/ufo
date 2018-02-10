@@ -9,6 +9,7 @@ module Ufo
   autoload :Default, 'ufo/default'
   autoload :AwsService, 'ufo/aws_service'
   autoload :Command, 'ufo/command'
+  autoload :Main, 'ufo/main'
   autoload :Setting, 'ufo/setting'
   autoload :Util, 'ufo/util'
   autoload :Init, 'ufo/init'
