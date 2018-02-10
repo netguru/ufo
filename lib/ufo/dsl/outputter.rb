@@ -1,5 +1,5 @@
 module Ufo
-  class DSL
+  class Dsl
     class Outputter
       def initialize(name, erb_result, options={})
         @name = name

@@ -5,8 +5,8 @@ require "json"
 #   ufo ship app-web --cluster prod --noop
 module Ufo
   class Ecr::Cleaner
-    include AwsServices
-    include Defaults
+    include AwsService
+    include Default
 
     def initialize(docker_image_name, options={})
       # docker_image_name does not containg the tag

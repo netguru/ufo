@@ -126,7 +126,7 @@ module Ufo
     end
 
     def settings
-      @settings ||= Settings.new(@project_root)
+      @settings ||= Setting.new(@project_root)
     end
 
     def update_dockerfile

@@ -5,7 +5,7 @@ module Ufo
   autoload :Outputter, 'ufo/dsl/outputter'
   autoload :Helper, 'ufo/dsl/helper'
 
-  class DSL
+  class Dsl
     def initialize(template_definitions_path, options={})
       @template_definitions_path = template_definitions_path
       @options = options

@@ -5,7 +5,7 @@
 
 # Simply aggregates a bunch of variables that is useful for the task_definition.
 module Ufo
-  class DSL
+  class Dsl
     # provides some helperally context variables
     class Helper
       def initialize(options={})
@@ -64,7 +64,7 @@ module Ufo
       end
 
       def settings
-        @settings ||= Settings.new(@project_root)
+        @settings ||= Setting.new(@project_root)
       end
 
       def parse_for_dockerfile_port(dockerfile_path)

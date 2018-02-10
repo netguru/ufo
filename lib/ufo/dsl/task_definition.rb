@@ -2,7 +2,7 @@ require "erb"
 require "json"
 
 module Ufo
-  class DSL
+  class Dsl
     class TaskDefinition
       attr_reader :task_definition_name
       def initialize(dsl, task_definition_name, options={}, &block)

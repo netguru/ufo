@@ -6,10 +6,10 @@ require 'fileutils'
 
 module Ufo
   autoload :Env, 'ufo/env'
-  autoload :Defaults, 'ufo/defaults'
-  autoload :AwsServices, 'ufo/aws_services'
+  autoload :Default, 'ufo/default'
+  autoload :AwsService, 'ufo/aws_service'
   autoload :Command, 'ufo/command'
-  autoload :Settings, 'ufo/settings'
+  autoload :Setting, 'ufo/setting'
   autoload :Util, 'ufo/util'
   autoload :Init, 'ufo/init'
   autoload :CLI, 'ufo/cli'
@@ -19,7 +19,7 @@ module Ufo
   autoload :Ship, 'ufo/ship'
   autoload :Task, 'ufo/task'
   autoload :Destroy, 'ufo/destroy'
-  autoload :DSL, 'ufo/dsl'
+  autoload :Dsl, 'ufo/dsl'
   autoload :Scale, 'ufo/scale'
   autoload :LogGroup, 'ufo/log_group'
 
