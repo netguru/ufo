@@ -8,14 +8,6 @@ module Ufo
     class_option :project_root, type: :string, default: '.'
     class_option :cluster, desc: "Cluster.  Overrides ufo/settings.yml."
 
-    desc "docker [ACTION]", "docker related tasks"
-    long_desc Help.text(:docker)
-    subcommand "docker", Docker
-
-    desc "tasks [ACTION]", "task definition related tasks"
-    long_desc Help.text(:tasks)
-    subcommand "tasks", Tasks
-
     desc "init", "setup initial ufo files"
     option :image, type: :string, required: true, desc: "Docker image name without the tag. Example: tongueroo/hi. Configures ufo/settings.yml"
     option :app, type: :string, required: true, desc: "App name. Preferably one word. Used in the generated ufo/task_definitions.rb."
@@ -92,6 +84,12 @@ module Ufo
     long_desc Help.text(:scale)
     def scale(service, count)
       Scale.new(service, count, options).update
+    end
+
+    desc "completions *PARAMS", "prints words for auto-completion"
+    long_desc Help.text(:completions)
+    def completions(*params)
+      Completer.new(*params).run
     end
 
     desc "version", "Prints version number of installed ufo"
