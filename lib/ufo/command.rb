@@ -51,7 +51,7 @@ module Ufo
       # order. The eager load actually uses autoloading.
       def eager_load!
         path = File.expand_path("../../", __FILE__)
-        Dir.glob("#{path}/**/*.rb").select do |path|
+        Dir.glob("#{path}/ufo/**/*.rb").select do |path|
           next if !File.file?(path)
 
           class_name = path
