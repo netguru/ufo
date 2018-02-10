@@ -13,6 +13,8 @@ module Ufo
   autoload :Util, 'ufo/util'
   autoload :Init, 'ufo/init'
   autoload :CLI, 'ufo/cli'
+  autoload :Completions, "ufo/completions"
+  autoload :Completer, "ufo/completer"
   autoload :Help, 'ufo/help'
   autoload :Ship, 'ufo/ship'
   autoload :Task, 'ufo/task'
@@ -24,7 +26,6 @@ module Ufo
   autoload :Docker, 'ufo/docker'
   autoload :Ecr, 'ufo/ecr'
   autoload :Tasks, 'ufo/tasks'
-  autoload :Completions, 'ufo/completions'
 end
 
 Ufo::Env.setup!
