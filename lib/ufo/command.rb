@@ -49,7 +49,12 @@ module Ufo
       # Useful for help menu when we need to have all the definitions loaded.
       # Using constantize instead of require so we dont care about
       # order. The eager load actually uses autoloading.
+      @@eager_loaded = false
       def eager_load!
+        return if @@eager_loaded
+        # puts caller[0]
+        # puts t1 = Time.now
+        # puts "eager_load 1 #{Time.now}"
         path = File.expand_path("../../", __FILE__)
         Dir.glob("#{path}/ufo/**/*.rb").select do |path|
           next if !File.file?(path)
@@ -69,6 +74,11 @@ module Ufo
           puts "eager_load! loading path: #{path} class_name: #{class_name}" if debug?
           class_name.constantize # dont have to worry about order.
         end
+        # puts "eager_load 2 #{Time.now}"
+        # puts t2 = Time.now
+        # puts "time: #{t2 - t1}"
+
+        @@eager_loaded = true
       end
 
       # Special class mapping cases. This is because ActiveSupport's autoloading

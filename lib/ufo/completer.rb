@@ -58,27 +58,8 @@ module Ufo
     autoload :Script, 'ufo/completer/script'
 
     def initialize(*params)
+      log "params #{params.inspect}"
       @params = params
-    end
-
-    def current_command
-      @params[0]
-    end
-
-    # Example: sub:goodbye => "sub"
-    def namespace
-      return nil unless current_command
-
-      if current_command.include?(':')
-        words = current_command.split(':')
-        words.pop
-        words.join(':')
-      end
-    end
-
-    # Example: sub:goodbye => "goodbye"
-    def trailing_command
-      current_command.split(':').last
     end
 
     def run
@@ -106,6 +87,7 @@ module Ufo
     end
 
     def params_completions(current_command)
+      log "params_completions params #{@params.inspect}"
       method_params = command_class.instance_method(trailing_command).parameters
       # Example:
       # >> Sub.instance_method(:goodbye).parameters
@@ -131,8 +113,35 @@ module Ufo
       filtered_options
     end
 
+    def current_command
+      @params[0]
+    end
+
+    # Example: sub:goodbye => "sub"
+    def namespace
+      return nil unless current_command
+
+      if current_command.include?(':')
+        words = current_command.split(':')
+        words.pop
+        words.join(':')
+      end
+    end
+
+    # Example: sub:goodbye => "goodbye"
+    def trailing_command
+      current_command.split(':').last
+    end
+
     def command_class
       @command_class ||= Ufo::Command.klass_from_namespace(namespace)
+    end
+
+    def log(msg)
+      return # disable for now
+      File.open("/tmp/complete.log", "a") do |file|
+        file.puts(msg)
+      end
     end
   end
 end
