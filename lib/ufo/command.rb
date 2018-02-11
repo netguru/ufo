@@ -31,6 +31,10 @@ module Ufo
       def perform(full_command, thor_args)
         config = {} # doesnt seem like config is used
         dispatch(nil, thor_args, nil, config)
+      rescue Thor::InvocationError => e
+        puts e.message
+        puts "  ufo #{full_command} -h # for more help"
+        exit 1
       end
 
       # Track all command subclasses.
